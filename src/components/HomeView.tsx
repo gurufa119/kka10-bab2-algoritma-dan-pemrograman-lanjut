@@ -119,12 +119,11 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateTab, onSelectMater
       id: 'game',
       title: 'GAME',
       subtitle: 'Balapan Kuis 2 Kelompok',
-      desc: 'Arena adu cepat cerdas cermat 2 kelompok. Saat ini dinonaktifkan sementara oleh Guru Pengampu.',
+      desc: 'Arena adu cepat cerdas cermat 2 kelompok dalam split screen balapan mobil interaktif dengan soal mandiri per tim.',
       icon: Gamepad2,
-      accent: 'from-slate-400 to-slate-600',
-      tag: 'Terkunci',
-      disabled: true,
-      action: () => alert('Fitur Game saat ini sedang dinonaktifkan sementara oleh Guru Pengampu (M. Faisal Abduh, M.Pd.).')
+      accent: 'from-fuchsia-500 to-pink-600',
+      tag: 'Versus Race',
+      action: () => onNavigateTab('game')
     },
     {
       id: 'evaluasi',
@@ -225,11 +224,11 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateTab, onSelectMater
               Menu Pembelajaran Interaktif
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              Pilih modul materi, kuis indikator, atau profil pengampu.
+              Pilih modul materi, kuis indikator, game cerdas cermat, atau profil pengampu.
             </p>
           </div>
           <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg">
-            10 Menu (2 Terkunci)
+            10 Menu (Evaluasi Terkunci)
           </span>
         </div>
 

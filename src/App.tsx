@@ -71,16 +71,18 @@ export default function App() {
 
         {activeTab === 'kuis' && <KuisView />}
 
-        {(activeTab === 'game' || activeTab === 'evaluasi') && (
+        {activeTab === 'game' && <GameView />}
+
+        {activeTab === 'evaluasi' && (
           <div className="max-w-xl mx-auto my-12 p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center shadow-xl space-y-4">
             <div className="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto shadow-md">
               <Lock className="w-8 h-8" />
             </div>
             <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-              Fitur Sedang Dinonaktifkan Sementara
+              Fitur Evaluasi Sedang Dinonaktifkan Sementara
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-              Fitur {activeTab === 'game' ? 'Game Balapan Kuis' : 'Evaluasi Akhir 36 Menit'} saat ini sedang dinonaktifkan sementara oleh Guru Pengampu (<strong>M. FAISAL ABDUH, M.Pd.</strong>). Silakan pelajari Materi 2.1 s.d. 2.6 dan latihan Kuis terlebih dahulu.
+              Fitur Evaluasi Akhir 36 Menit saat ini sedang dinonaktifkan sementara menunggu jadwal pelaksanaan ujian dari Guru Pengampu (<strong>M. FAISAL ABDUH, M.Pd.</strong>). Silakan pelajari Materi 2.1 s.d. 2.6, latihan Kuis indikator, atau mainkan Game edukatif terlebih dahulu.
             </p>
             <button
               onClick={() => setActiveTab('home')}
