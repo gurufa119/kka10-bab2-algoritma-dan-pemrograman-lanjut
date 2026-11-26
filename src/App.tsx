@@ -8,7 +8,6 @@ import { GameView } from './components/GameView';
 import { EvaluasiView } from './components/EvaluasiView';
 import { ProfilGuruView } from './components/ProfilGuruView';
 import { FloatingControls } from './components/FloatingControls';
-import { Lock } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<NavTab>('home');
@@ -73,25 +72,7 @@ export default function App() {
 
         {activeTab === 'game' && <GameView />}
 
-        {activeTab === 'evaluasi' && (
-          <div className="max-w-xl mx-auto my-12 p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center shadow-xl space-y-4">
-            <div className="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto shadow-md">
-              <Lock className="w-8 h-8" />
-            </div>
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-              Fitur Evaluasi Sedang Dinonaktifkan Sementara
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-              Fitur Evaluasi Akhir 36 Menit saat ini sedang dinonaktifkan sementara menunggu jadwal pelaksanaan ujian dari Guru Pengampu (<strong>M. FAISAL ABDUH, M.Pd.</strong>). Silakan pelajari Materi 2.1 s.d. 2.6, latihan Kuis indikator, atau mainkan Game edukatif terlebih dahulu.
-            </p>
-            <button
-              onClick={() => setActiveTab('home')}
-              className="px-6 py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs sm:text-sm hover:bg-emerald-500 transition-colors shadow-md cursor-pointer inline-flex items-center gap-2"
-            >
-              <span>Kembali ke Halaman Home</span>
-            </button>
-          </div>
-        )}
+        {activeTab === 'evaluasi' && <EvaluasiView />}
 
         {activeTab === 'profil' && <ProfilGuruView />}
       </main>

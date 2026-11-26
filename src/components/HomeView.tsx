@@ -16,8 +16,7 @@ import {
   Sparkles,
   School,
   Clock,
-  Layers,
-  Lock
+  Layers
 } from 'lucide-react';
 
 interface HomeViewProps {
@@ -129,12 +128,11 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateTab, onSelectMater
       id: 'evaluasi',
       title: 'EVALUASI',
       subtitle: 'Uji Kompetensi Terstruktur',
-      desc: 'Pengerjaan soal 36 menit. Saat ini dinonaktifkan sementara menunggu jadwal pelaksanaan dari Guru Pengampu.',
+      desc: 'Ujian akhir 36 menit mencakup 4 bagian soal (PG, PG Kompleks, Benar/Salah, Menjodohkan) dengan skor otomatis.',
       icon: GraduationCap,
-      accent: 'from-slate-400 to-slate-600',
-      tag: 'Terkunci',
-      disabled: true,
-      action: () => alert('Fitur Evaluasi saat ini sedang dinonaktifkan sementara menunggu jadwal dari Guru Pengampu (M. Faisal Abduh, M.Pd.).')
+      accent: 'from-amber-500 to-orange-600',
+      tag: 'Timer 36 Menit',
+      action: () => onNavigateTab('evaluasi')
     },
     {
       id: 'profil',
@@ -224,42 +222,37 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateTab, onSelectMater
               Menu Pembelajaran Interaktif
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-              Pilih modul materi, kuis indikator, game cerdas cermat, atau profil pengampu.
+              Pilih modul materi, kuis indikator, game cerdas cermat, evaluasi akhir, atau profil pengampu.
             </p>
           </div>
-          <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg">
-            10 Menu (Evaluasi Terkunci)
+          <span className="text-xs font-semibold px-2.5 py-1 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 rounded-lg">
+            10 Menu Aktif
           </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
           {menuCards.map((card) => {
             const Icon = card.icon;
-            const isDisabled = !!card.disabled;
 
             return (
               <div
                 key={card.id}
                 onClick={card.action}
-                className={`group relative flex flex-col justify-between p-5 rounded-2xl bg-white dark:bg-slate-900 border shadow-sm transition-all duration-200 ${
-                  isDisabled
-                    ? 'opacity-65 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/50 cursor-not-allowed'
-                    : 'border-slate-200 dark:border-slate-800 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-xl hover:-translate-y-1 cursor-pointer'
-                }`}
+                className="group relative flex flex-col justify-between p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 dark:hover:border-emerald-500 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer"
               >
                 <div>
                   {/* Icon Header */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-tr ${card.accent} flex items-center justify-center text-white shadow-md ${isDisabled ? 'grayscale-50' : 'group-hover:scale-110'} transition-transform`}>
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-tr ${card.accent} flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform`}>
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className={`text-[11px] font-medium ${isDisabled ? 'text-amber-600 dark:text-amber-400 font-semibold' : 'text-slate-400 dark:text-slate-500'}`}>
+                    <span className="text-[11px] font-medium text-slate-400 dark:text-slate-500">
                       {card.tag}
                     </span>
                   </div>
 
                   {/* Title & Subtitle */}
-                  <h3 className={`text-base font-bold ${isDisabled ? 'text-slate-600 dark:text-slate-400' : 'text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400'} transition-colors`}>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                     {card.title}
                   </h3>
                   <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
@@ -274,19 +267,10 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateTab, onSelectMater
 
                 {/* Footer Action */}
                 <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-semibold">
-                  {isDisabled ? (
-                    <span className="text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
-                      <Lock className="w-3.5 h-3.5" />
-                      <span>Nonaktif Sementara</span>
-                    </span>
-                  ) : (
-                    <>
-                      <span className="text-emerald-600 dark:text-emerald-400 group-hover:translate-x-0.5 transition-transform">
-                        Buka Halaman
-                      </span>
-                      <ArrowRight className="w-4 h-4 text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition-transform" />
-                    </>
-                  )}
+                  <span className="text-emerald-600 dark:text-emerald-400 group-hover:translate-x-0.5 transition-transform">
+                    Buka Halaman
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             );
